@@ -1,4 +1,37 @@
-td {
+h1, h2, h3 {
+  text-align: center;
+}
+
+button, div {
+  display: block;
+  float: center;
+  text-align: center;
+}
+
+button {
+  position: sticky;
+  left: 45%;
+  right: 50%;
+}
+
+td.gameCell {
   border: solid blue;
   padding: 20px;
+}
+
+#scoreBoard {
+  display: row;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.playerName {
+  padding: 0px 20px;
+  border: solid rgb(0, 195, 255);
+  font-size: 25px;
+}
+
+.individualScore {
+  font-size: 20px;
 }

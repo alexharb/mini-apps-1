@@ -8,26 +8,51 @@
   </head>
 
   <body>
+
+    <h1>
+      Welcome to Alex's beautiful amazing spectacular tic tac toe game
+    </h1>
+
+    <h2>
+      Player 1's X vs Player 2's O
+    </h2>
+
+    <h3>
+      Player 1's Turn
+    </h3>
     
-    <table>
+    <table id="gameBox" align="center">
       <tr>
-        <td onclick="changeClick(0)">&nbsp;&nbsp;</td>
-        <td onclick="changeClick(1)">&nbsp;&nbsp;</td>
-        <td onclick="changeClick(2)">&nbsp;&nbsp;</td>
+        <td class="gameCell" onclick="changeClick(0)">&nbsp;&nbsp;</td>
+        <td class="gameCell" onclick="changeClick(1)">&nbsp;&nbsp;</td>
+        <td class="gameCell" onclick="changeClick(2)">&nbsp;&nbsp;</td>
       </tr>
       <tr>
-        <td onclick="changeClick(3)">&nbsp;&nbsp;</td>
-        <td onclick="changeClick(4)">&nbsp;&nbsp;</td>
-        <td onclick="changeClick(5)">&nbsp;&nbsp;</td>
+        <td class="gameCell" onclick="changeClick(3)">&nbsp;&nbsp;</td>
+        <td class="gameCell" onclick="changeClick(4)">&nbsp;&nbsp;</td>
+        <td class="gameCell" onclick="changeClick(5)">&nbsp;&nbsp;</td>
       </tr>
       <tr>
-        <td onclick="changeClick(6)">&nbsp;&nbsp;</td>
-        <td onclick="changeClick(7)">&nbsp;&nbsp;</td>
-        <td onclick="changeClick(8)">&nbsp;&nbsp;</td>
+        <td class="gameCell" onclick="changeClick(6)">&nbsp;&nbsp;</td>
+        <td class="gameCell" onclick="changeClick(7)">&nbsp;&nbsp;</td>
+        <td class="gameCell" onclick="changeClick(8)">&nbsp;&nbsp;</td>
       </tr>
     </table>
+
     <div id="end message">&nbsp;&nbsp;</div>
     <button onclick="newGame()">START A NEW GAME</button>
+    
+    <table align="center" id="scoreboard">
+      <tr class="scoreboardRow" id="playerTitles">
+        <td class="playerName" id="p1Name">Player 1</td>
+        <td class="playerName" id="p2Name">Player 2</td>
+      </tr>
+      <tr class="scoreboardRow" id="scores">
+        <td class="individualScore" id="p1Score">0</td>
+        <td class="individualScore" id="p2Score">0</td>
+      </tr>
+    </table>
+
   </body>
 
 </html>

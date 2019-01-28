@@ -1,8 +1,14 @@
 var whoseTurn = 'x';
 var numOfClicks = 0;
+var winnerChar;
+var winner;
+var winnerScore;
+var winnerScoreNum;
+var p1Score = 0;
+var p2Score = 0;
 
 function changeClick(index) {
-  var clicked = document.getElementsByTagName("td");
+  var clicked = document.getElementsByClassName("gameCell");
   var clickedSpace = clicked[index].innerHTML;
   if (clickedSpace !== 'x' && clickedSpace !== 'o' ) {
     clicked[index].innerHTML = whoseTurn;
@@ -17,7 +23,9 @@ function changeClick(index) {
       var colWin = columnCheck(clicked);
       var diagWin = diagCheck(clicked);
       if (lineWin || colWin || diagWin) {
-        document.getElementById('end message').innerHTML = "YOU WIN"
+        defineWinner(winnerChar);
+        winnerScore.innerHTML = winnerScoreNum;
+        document.getElementById('end message').innerHTML = winner.innerHTML + " wins!"
       } else if (numOfClicks === 9) {
         document.getElementById('end message').innerHTML = "TIE GAME"
       }
@@ -28,7 +36,7 @@ function changeClick(index) {
 function newGame() {
   whoseTurn = 'x';
   numOfClicks = 0;
-  var spaces = document.getElementsByTagName('td');
+  var spaces = document.getElementsByClassName("gameCell");
   document.getElementById('end message').innerHTML = '&nbsp;&nbsp;'
   for (var i in spaces) {
     spaces[i].innerHTML = '&nbsp;&nbsp;';
@@ -80,6 +88,19 @@ function diagCheck(list) {
   return checkForWin(diagList);
 }
 
+function defineWinner(playerChar) {
+  if (playerChar === 'x') {
+    p1Score++;
+    winnerScoreNum = p1Score;
+    winnerScore = document.getElementById("p1Score");
+    winner = document.getElementById("p1Name");
+  } else {
+    p2Score++;
+    winnerScoreNum = p2Score;
+    winnerScore = document.getElementById("p2Score");
+    winner = document.getElementById("p2Name");
+  }
+}
 
 function checkForWin(listOfLists) {
   return listOfLists.reduce((check1, row) => {
@@ -94,6 +115,7 @@ function checkForWin(listOfLists) {
           return check2;
         }
         if (previous === data && check2) {
+          winnerChar = data;
           return check2;
         } else {
           return false;
