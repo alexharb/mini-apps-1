@@ -1,7 +1,7 @@
 var whoseTurn = 'x';
 var numOfClicks = 0;
 var winnerChar;
-var winner;
+var winner = document.getElementById("p1Name");
 var winnerScore;
 var winnerScoreNum;
 var p1Score = 0;
@@ -45,7 +45,11 @@ function newGame() {
   var spaces = document.getElementsByClassName("gameCell");
   document.getElementById('end message').innerHTML = '&nbsp;&nbsp;'
   gameComplete = false;
-  document.getElementById("turnLabel").innerHTML = winner.innerHTML + "'s turn"
+  if (winner) {
+    document.getElementById("turnLabel").innerHTML = winner.innerHTML + "'s turn"
+  } else {
+    document.getElementById("turnLabel").innerHTML = document.getElementById("p1Name").innerHTML + "'s turn"
+  }
   for (var i in spaces) {
     spaces[i].innerHTML = '&nbsp;&nbsp;';
   }
@@ -141,5 +145,5 @@ function changeName(player) {
     playerNameElement = document.getElementById("p2Name")
   }
   var name = prompt("Enter your player name, Player " + player.toString(), "Player " + player.toString());
-  playerNameElement.innerHTML = name;
+  playerNameElement.innerHTML = name.slice(0, 15);
 }
