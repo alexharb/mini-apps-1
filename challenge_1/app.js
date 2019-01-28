@@ -6,16 +6,19 @@ var winnerScore;
 var winnerScoreNum;
 var p1Score = 0;
 var p2Score = 0;
+var gameComplete = false;
 
 function changeClick(index) {
   var clicked = document.getElementsByClassName("gameCell");
   var clickedSpace = clicked[index].innerHTML;
-  if (clickedSpace !== 'x' && clickedSpace !== 'o' ) {
+  if (clickedSpace !== 'x' && clickedSpace !== 'o' && !gameComplete) {
     clicked[index].innerHTML = whoseTurn;
     numOfClicks++;
     if (whoseTurn ==='x') {
+      document.getElementById("turnLabel").innerHTML = document.getElementById("p2Name").innerHTML + "'s turn"
       whoseTurn = 'o';
     } else {
+      document.getElementById("turnLabel").innerHTML = document.getElementById("p1Name").innerHTML + "'s turn"
       whoseTurn = 'x';
     }
     if (numOfClicks > 2) {
@@ -23,10 +26,14 @@ function changeClick(index) {
       var colWin = columnCheck(clicked);
       var diagWin = diagCheck(clicked);
       if (lineWin || colWin || diagWin) {
+        gameComplete = true;
+        document.getElementById("turnLabel").innerHTML = "And that's the game!  Winner starts the next round."
+        whoseTurn = winnerChar;
         defineWinner(winnerChar);
         winnerScore.innerHTML = winnerScoreNum;
         document.getElementById('end message').innerHTML = winner.innerHTML + " wins!"
       } else if (numOfClicks === 9) {
+        document.getElementById("turnLabel").innerHTML = "And that's the game!"
         document.getElementById('end message').innerHTML = "TIE GAME"
       }
     } 
@@ -34,10 +41,11 @@ function changeClick(index) {
 }
 
 function newGame() {
-  whoseTurn = 'x';
   numOfClicks = 0;
   var spaces = document.getElementsByClassName("gameCell");
   document.getElementById('end message').innerHTML = '&nbsp;&nbsp;'
+  gameComplete = false;
+  document.getElementById("turnLabel").innerHTML = winner.innerHTML + "'s turn"
   for (var i in spaces) {
     spaces[i].innerHTML = '&nbsp;&nbsp;';
   }
@@ -123,4 +131,15 @@ function checkForWin(listOfLists) {
       }, true)
     }
   }, false)
+}
+
+function changeName(player) {
+  var playerNameElement;
+  if (player === 1) {
+    playerNameElement = document.getElementById("p1Name")
+  } else {
+    playerNameElement = document.getElementById("p2Name")
+  }
+  var name = prompt("Enter your player name, Player " + player.toString(), "Player " + player.toString());
+  playerNameElement.innerHTML = name;
 }

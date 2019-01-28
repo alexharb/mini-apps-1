@@ -2,13 +2,13 @@ h1, h2, h3 {
   text-align: center;
 }
 
-button, div {
+#newGameButton, div {
   display: block;
   float: center;
   text-align: center;
 }
 
-button {
+#newGameButton {
   position: sticky;
   left: 45%;
   right: 50%;
