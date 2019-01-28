@@ -17,9 +17,21 @@ function changeClick(index) {
       var colWin = columnCheck(clicked);
       var diagWin = diagCheck(clicked);
       if (lineWin || colWin || diagWin) {
-        document.getElementById('you win').innerHTML = "YOU WIN"
+        document.getElementById('end message').innerHTML = "YOU WIN"
+      } else if (numOfClicks === 9) {
+        document.getElementById('end message').innerHTML = "TIE GAME"
       }
-    }
+    } 
+  }
+}
+
+function newGame() {
+  whoseTurn = 'x';
+  numOfClicks = 0;
+  var spaces = document.getElementsByTagName('td');
+  document.getElementById('end message').innerHTML = '&nbsp;&nbsp;'
+  for (var i in spaces) {
+    spaces[i].innerHTML = '&nbsp;&nbsp;';
   }
 }
 
