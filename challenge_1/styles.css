@@ -25,11 +25,11 @@ td.gameCell {
   justify-content: space-between;
 }
 
-
 .playerName {
   padding: 0px 20px;
   border: solid rgb(0, 195, 255);
   font-size: 25px;
+  height: 30px;
 }
 
 .individualScore {

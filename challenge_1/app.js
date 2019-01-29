@@ -22,21 +22,25 @@ function changeClick(index) {
       whoseTurn = 'x';
     }
     if (numOfClicks > 2) {
-      var lineWin = lineCheck(clicked);
-      var colWin = columnCheck(clicked);
-      var diagWin = diagCheck(clicked);
-      if (lineWin || colWin || diagWin) {
-        gameComplete = true;
-        document.getElementById("turnLabel").innerHTML = "And that's the game!  Winner starts the next round."
-        whoseTurn = winnerChar;
-        defineWinner(winnerChar);
-        winnerScore.innerHTML = winnerScoreNum;
-        document.getElementById('end message').innerHTML = winner.innerHTML + " wins!"
-      } else if (numOfClicks === 9) {
-        document.getElementById("turnLabel").innerHTML = "And that's the game!"
-        document.getElementById('end message').innerHTML = "TIE GAME"
-      }
+      checkAllWinConditions(clicked);
     } 
+  }
+}
+
+function checkAllWinConditions(gameCells) {
+  var lineWin = lineCheck(gameCells);
+  var colWin = columnCheck(gameCells);
+  var diagWin = diagCheck(gameCells);
+  if (lineWin || colWin || diagWin) {
+    gameComplete = true;
+    document.getElementById("turnLabel").innerHTML = "And that's the game!  Winner starts the next round."
+    whoseTurn = winnerChar;
+    defineWinner(winnerChar);
+    winnerScore.innerHTML = winnerScoreNum;
+    document.getElementById('end message').innerHTML = winner.innerHTML + " wins!"
+  } else if (numOfClicks === 9) {
+    document.getElementById("turnLabel").innerHTML = "And that's the game!"
+    document.getElementById('end message').innerHTML = "TIE GAME"
   }
 }
 
@@ -139,11 +143,16 @@ function checkForWin(listOfLists) {
 
 function changeName(player) {
   var playerNameElement;
+  var name = prompt("Enter your player name, Player " + player.toString(), "Player " + player.toString());
   if (player === 1) {
     playerNameElement = document.getElementById("p1Name")
   } else {
     playerNameElement = document.getElementById("p2Name")
   }
-  var name = prompt("Enter your player name, Player " + player.toString(), "Player " + player.toString());
-  playerNameElement.innerHTML = name.slice(0, 15);
+  if (name.length > 0) {
+    playerNameElement.innerHTML = name.slice(0, 15);
+    document.getElementById("gameLabel").innerHTML = document.getElementById("p1Name").innerHTML + "'s X vs " +
+      document.getElementById("p2Name").innerHTML + "'s O";
+    
+  }
 }
