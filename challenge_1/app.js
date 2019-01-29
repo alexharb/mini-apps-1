@@ -15,9 +15,11 @@ function changeClick(index) {
     clicked[index].innerHTML = whoseTurn;
     numOfClicks++;
     if (whoseTurn ==='x') {
+      clicked[index].setAttribute("style", "cursor: default; color: rgb(255, 119, 119);");
       document.getElementById("turnLabel").innerHTML = document.getElementById("p2Name").innerHTML + "'s turn"
       whoseTurn = 'o';
     } else {
+      clicked[index].style.cssText = "cursor: default; color: rgb(117, 248, 255);"
       document.getElementById("turnLabel").innerHTML = document.getElementById("p1Name").innerHTML + "'s turn"
       whoseTurn = 'x';
     }
@@ -54,8 +56,9 @@ function newGame() {
   } else {
     document.getElementById("turnLabel").innerHTML = document.getElementById("p1Name").innerHTML + "'s turn"
   }
-  for (var i in spaces) {
+  for (var i = 0; i < spaces.length; i++) {
     spaces[i].innerHTML = '&nbsp;&nbsp;';
+    spaces[i].setAttribute("style", "cursor: pointer");
   }
 }
 

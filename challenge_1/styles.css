@@ -10,6 +10,7 @@ button {
   padding: 10px 20px;
   text-align: center;
   font-size: 15px;
+  cursor: pointer;
 }
 
 div {
@@ -27,6 +28,7 @@ div {
   display: block;
   position: sticky;
   margin: 0px;
+  background-color: rgb(255, 214, 161);
 }
 
 td.gameCell {
@@ -34,6 +36,7 @@ td.gameCell {
   background-color: rgb(255, 255, 185);
   padding: 10px 20px;
   font-size: 30px;
+  cursor: pointer;
 }
 
 #scoreBoard {
@@ -49,8 +52,16 @@ td.gameCell {
   font-size: 25px;
   height: 30px;
   text-align: center;
+  border-radius: 8px;
 }
 
 .individualScore {
   font-size: 20px;
+  text-indent: 10%;
+  border-radius: 10px;
+  background-color: rgba(211, 144, 255, 0.438);
+}
+
+.renameButton {
+  background-color: rgb(148, 239, 255);
 }
