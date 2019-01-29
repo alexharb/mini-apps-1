@@ -7,6 +7,7 @@ var winnerScoreNum;
 var p1Score = 0;
 var p2Score = 0;
 var gameComplete = false;
+var colorCycle = 0;
 
 function changeClick(index) {
   var clicked = document.getElementsByClassName("gameCell");
@@ -156,6 +157,24 @@ function changeName(player) {
     playerNameElement.innerHTML = name.slice(0, 15);
     document.getElementById("gameLabel").innerHTML = document.getElementById("p1Name").innerHTML + "'s X vs " +
       document.getElementById("p2Name").innerHTML + "'s O";
-    
   }
+}
+
+function loadTitle() {
+  var colorArray = ['rgb(255,214,214)', 'rgb(250,255,176)', 'rgb(192,255,182)', 'rgb(208,221,255)', 'rgb(225,191,255)']
+  var titleElement = document.getElementById("gameTitle");
+  titleElement.innerHTML = '';
+  var title = "Welcome to Alex's beautiful amazing spectacular tic tac toe game";
+  for (var i = 0; i < title.length; i++) {
+    var letter = document.createElement('span');
+    letter.setAttribute("style", "color: " + colorArray[colorCycle % 5])
+    colorCycle++;
+    letter.innerHTML = title[i];
+    titleElement.appendChild(letter);
+  }
+  setTimeout(loadTitle, 100)
+}
+
+function colorChange() {
+  
 }
