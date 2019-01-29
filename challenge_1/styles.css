@@ -65,3 +65,11 @@ td.gameCell {
 .renameButton {
   background-color: rgb(148, 239, 255);
 }
+
+#gameLabel {
+  color: rgb(168, 158, 255);
+}
+
+#turnLabel {
+  color: rgb(194, 130, 255);
+}

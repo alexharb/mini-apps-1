@@ -147,18 +147,36 @@ function checkForWin(listOfLists) {
 
 function changeName(player) {
   var playerNameElement;
-  var name = prompt("Enter your player name, Player " + player.toString(), "Player " + player.toString());
+  var name = prompt("Enter your player name, Player " + player.toString() + '  (7 character limit)', "Player " + player.toString());
   if (player === 1) {
     playerNameElement = document.getElementById("p1Name")
   } else {
     playerNameElement = document.getElementById("p2Name")
   }
   if (name.length > 0) {
-    playerNameElement.innerHTML = name.slice(0, 15);
+    playerNameElement.innerHTML = name.slice(0, 7);
     document.getElementById("gameLabel").innerHTML = document.getElementById("p1Name").innerHTML + "'s X vs " +
       document.getElementById("p2Name").innerHTML + "'s O";
   }
 }
+
+// function loadTitle() {
+//   var colorArray = ['rgb(255,214,214)', 'rgb(250,255,176)', 'rgb(192,255,182)', 'rgb(208,221,255)', 'rgb(225,191,255)'];
+//   var mainElementList = document.getElementsByClassName("colorMan");
+//   for(var i = 0; i < mainElementList.length; i++) {
+//     var mainElement = mainElementList[i];
+//     var mainElementText = mainElement.textContent;
+//     mainElement.innerHTML = '';
+//     for (var j = 0; j < mainElementText.length; j++) {
+//       var letter = document.createElement('span');
+//       letter.setAttribute("style", "color: " + colorArray[colorCycle % 5])
+//       colorCycle++;
+//       letter.innerHTML = mainElementText[j];
+//       mainElement.appendChild(letter);
+//     }
+//   }
+//   setTimeout(loadTitle, 100)
+// }
 
 function loadTitle() {
   var colorArray = ['rgb(255,214,214)', 'rgb(250,255,176)', 'rgb(192,255,182)', 'rgb(208,221,255)', 'rgb(225,191,255)']
